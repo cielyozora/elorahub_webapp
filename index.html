@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const section = urlParams.get('section');
+
+            if (section) {
+                redirectToSection(section);
+            } else {
+                // Default to home if no section is specified
+                window.location.href = 'home.html';
+            }
+        }
+
+        function redirectToSection(section) {
+            // Mapping of section names to URLs
+            const sectionUrls = {
+                'home': 'home.html',
+                'music': 'music.html',
+                'settings': 'settings.html'
+            };
+
+            // Redirect to the appropriate page
+            const url = sectionUrls[section];
+            if (url) {
+                window.location.href = url;
+            } else {
+                // Redirect to a default page or show an error
+                window.location.href = 'home.html'; // Default fallback
+                alert('Section not found');
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
